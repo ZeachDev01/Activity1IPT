@@ -1,12 +1,15 @@
 {
   "name": "activity1nacuasordilla",
   "version": "1.0.0",
+  "homepage": "https://github.com/ZeachDev01/Activity1IPT.git",
   "main": "index.js",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "predeploy": "npx expo export:web",
+    "deploy": "gh-pages -d web-build"
   },
   "dependencies": {
     "expo": "~54.0.33",
@@ -17,6 +20,9 @@
     "react-native": "0.81.5",
     "react-native-vector-icons": "^10.3.0",
     "react-native-web": "^0.21.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   },
   "private": true
 }
