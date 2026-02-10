@@ -1,7 +1,7 @@
 {
   "name": "activity1nacuasordilla",
   "version": "1.0.0",
-  "homepage": "https://github.com/ZeachDev01/Activity1IPT.git",
+  "homepage": "https://github.com/ZeachDev01/Activity1IPT",
   "main": "index.js",
   "scripts": {
     "start": "expo start",
