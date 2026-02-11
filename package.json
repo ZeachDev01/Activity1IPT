@@ -1,14 +1,14 @@
 {
   "name": "activity1nacuasordilla",
   "version": "1.0.0",
-  "homepage": "https://github.com/ZeachDev01/Activity1IPT",
+  "homepage": "https://ZeachDev01.github.io/Activity1IPT",
   "main": "index.js",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "predeploy": "npx expo export:web",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d web-build"
   },
   "dependencies": {
