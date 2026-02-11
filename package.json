@@ -4,13 +4,13 @@
   "homepage": "https://ZeachDev01.github.io/Activity1IPT",
   "main": "index.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d web-build"
-  },
+  "start": "expo start",
+  "android": "expo start --android",
+  "ios": "expo start --ios",
+  "web": "expo start --web",
+  "predeploy": "npx expo export --platform web",
+  "deploy": "gh-pages -d dist"
+},
   "dependencies": {
     "expo": "~54.0.33",
     "expo-av": "~16.0.8",
