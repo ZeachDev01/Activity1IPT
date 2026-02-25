@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   StyleSheet,
   View,
@@ -11,16 +11,16 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
-  Alert
-} from 'react-native';
+  Alert,
+} from "react-native";
 
-const { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get("window");
 
 export default function App() {
   // State variables
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -32,7 +32,7 @@ export default function App() {
 
     // Check if any field is empty
     if (!trimmedUsername || !trimmedPassword) {
-      setMessage('Please fill in all fields');
+      setMessage("Please fill in all fields");
       setModalVisible(true);
       return;
     }
@@ -42,14 +42,14 @@ export default function App() {
     // Simulate API call delay
     setTimeout(() => {
       // Check credentials
-      if (trimmedUsername === 'admin' && trimmedPassword === '1234') {
-        setMessage('Login Successful! Welcome back!');
+      if (trimmedUsername === "admin" && trimmedPassword === "1234") {
+        setMessage("Login Successful! Welcome back!");
         setModalVisible(true);
         // Clear input fields after successful login
-        setUsername('');
-        setPassword('');
+        setUsername("");
+        setPassword("");
       } else {
-        setMessage('Wrong Password. Please try again.');
+        setMessage("Invalid credentials");
         setModalVisible(true);
       }
       setIsLoading(false);
@@ -63,8 +63,8 @@ export default function App() {
 
   // Reset form
   const resetForm = () => {
-    setUsername('');
-    setPassword('');
+    setUsername("");
+    setPassword("");
   };
 
   // Responsive scaling function
@@ -80,11 +80,11 @@ export default function App() {
     input: {
       height: scaleSize(50),
       fontSize: scaleSize(16),
-      paddingHorizontal: scaleSize(12)
+      paddingHorizontal: scaleSize(12),
     },
     button: {
       height: scaleSize(56),
-      marginTop: scaleSize(24)
+      marginTop: scaleSize(24),
     },
     buttonText: { fontSize: scaleSize(18) },
     instructionsText: { fontSize: scaleSize(14) },
@@ -92,29 +92,29 @@ export default function App() {
     modalContent: {
       width: width * 0.85,
       padding: scaleSize(20),
-      borderRadius: scaleSize(16)
+      borderRadius: scaleSize(16),
     },
     modalMessage: {
       fontSize: scaleSize(18),
-      marginVertical: scaleSize(20)
+      marginVertical: scaleSize(20),
     },
     modalButton: {
-      height: scaleSize(44)
+      height: scaleSize(44),
     },
-    modalButtonText: { fontSize: scaleSize(16) }
+    modalButtonText: { fontSize: scaleSize(16) },
   };
 
   // Get modal color based on message
   const getModalColor = () => {
-    if (message.includes('Login Successful')) return '#4CAF50';
-    if (message.includes('Please fill')) return '#FF9800';
-    return '#f44336';
+    if (message.includes("Login Successful")) return "#4CAF50";
+    if (message.includes("Please fill")) return "#FF9800";
+    return "#f44336";
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.keyboardAvoid}
       >
         <ScrollView
@@ -124,10 +124,8 @@ export default function App() {
         >
           <View style={styles.content}>
             {/* App Title */}
-            <Text style={[styles.title, responsiveStyles.title]}>
-              Welcome Back
-            </Text>
-            
+            <Text style={[styles.title, responsiveStyles.title]}>Login</Text>
+
             <Text style={[styles.subtitle, { fontSize: scaleSize(16) }]}>
               login to your account
             </Text>
@@ -177,7 +175,7 @@ export default function App() {
               disabled={isLoading}
             >
               <Text style={[styles.buttonText, responsiveStyles.buttonText]}>
-                {isLoading ? 'Logging in...' : 'Login'}
+                {isLoading ? "Logging in..." : "Login"}
               </Text>
             </TouchableOpacity>
 
@@ -187,13 +185,20 @@ export default function App() {
               onPress={resetForm}
               disabled={isLoading}
             >
-              <Text style={[styles.resetButtonText, { fontSize: scaleSize(14) }]}>
+              <Text
+                style={[styles.resetButtonText, { fontSize: scaleSize(14) }]}
+              >
                 Clear Form
               </Text>
             </TouchableOpacity>
 
             {/* Info Text */}
-            <Text style={[styles.infoText, { fontSize: scaleSize(12), marginTop: scaleSize(16) }]}>
+            <Text
+              style={[
+                styles.infoText,
+                { fontSize: scaleSize(12), marginTop: scaleSize(16) },
+              ]}
+            >
               Fill both fields and press Login
             </Text>
           </View>
@@ -220,24 +225,30 @@ export default function App() {
             </TouchableOpacity>
 
             {/* Modal Icon */}
-            <View style={[
-              styles.modalIcon,
-              { backgroundColor: getModalColor() + '20' }
-            ]}>
-              <Text style={[
-                styles.modalIconText,
-                { color: getModalColor(), fontSize: scaleSize(32) }
-              ]}>
-                {message.includes('Login Successful') ? '✓' : '!'}
+            <View
+              style={[
+                styles.modalIcon,
+                { backgroundColor: getModalColor() + "20" },
+              ]}
+            >
+              <Text
+                style={[
+                  styles.modalIconText,
+                  { color: getModalColor(), fontSize: scaleSize(32) },
+                ]}
+              >
+                {message.includes("Login Successful") ? "✓" : "!"}
               </Text>
             </View>
 
             {/* Modal Message */}
-            <Text style={[
-              styles.modalMessage,
-              responsiveStyles.modalMessage,
-              { color: '#333' }
-            ]}>
+            <Text
+              style={[
+                styles.modalMessage,
+                responsiveStyles.modalMessage,
+                { color: "#333" },
+              ]}
+            >
               {message}
             </Text>
 
@@ -246,12 +257,17 @@ export default function App() {
               style={[
                 styles.modalButton,
                 responsiveStyles.modalButton,
-                { backgroundColor: getModalColor() }
+                { backgroundColor: getModalColor() },
               ]}
               onPress={closeModal}
               activeOpacity={0.8}
             >
-              <Text style={[styles.modalButtonText, responsiveStyles.modalButtonText]}>
+              <Text
+                style={[
+                  styles.modalButtonText,
+                  responsiveStyles.modalButtonText,
+                ]}
+              >
                 OK
               </Text>
             </TouchableOpacity>
@@ -265,7 +281,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f8f9fa',
+    backgroundColor: "#f8f9fa",
   },
   keyboardAvoid: {
     flex: 1,
@@ -276,58 +292,58 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     paddingVertical: 20,
   },
   title: {
-    fontWeight: '700',
-    color: '#2c3e50',
+    fontWeight: "700",
+    color: "#2c3e50",
     marginBottom: 8,
-    textAlign: 'center',
+    textAlign: "center",
   },
   subtitle: {
-    color: '#7f8c8d',
+    color: "#7f8c8d",
     marginBottom: 32,
-    textAlign: 'center',
+    textAlign: "center",
   },
   inputContainer: {
-    width: '100%',
+    width: "100%",
     marginBottom: 20,
   },
   label: {
     marginBottom: 8,
-    fontWeight: '600',
-    color: '#34495e',
+    fontWeight: "600",
+    color: "#34495e",
   },
   input: {
-    width: '100%',
-    backgroundColor: 'white',
+    width: "100%",
+    backgroundColor: "white",
     borderWidth: 1,
-    borderColor: '#e0e0e0',
+    borderColor: "#e0e0e0",
     borderRadius: 12,
     paddingHorizontal: 16,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.05,
     shadowRadius: 3,
     elevation: 2,
   },
   button: {
-    width: '100%',
-    backgroundColor: '#3498db',
+    width: "100%",
+    backgroundColor: "#3498db",
     borderRadius: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
-    shadowColor: '#3498db',
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#3498db",
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 4,
   },
   buttonText: {
-    color: 'white',
-    fontWeight: '600',
+    color: "white",
+    fontWeight: "600",
     letterSpacing: 0.5,
   },
   resetButton: {
@@ -335,70 +351,70 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   resetButtonText: {
-    color: '#7f8c8d',
-    fontWeight: '500',
+    color: "#7f8c8d",
+    fontWeight: "500",
   },
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
   },
   modalContent: {
-    backgroundColor: 'white',
-    alignItems: 'center',
-    shadowColor: '#000',
+    backgroundColor: "white",
+    alignItems: "center",
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.25,
     shadowRadius: 20,
     elevation: 10,
-    position: 'relative',
+    position: "relative",
   },
   modalCloseButton: {
-    position: 'absolute',
+    position: "absolute",
     top: 12,
     right: 16,
     zIndex: 1,
   },
   modalCloseText: {
     fontSize: 28,
-    color: '#95a5a6',
-    fontWeight: '300',
+    color: "#95a5a6",
+    fontWeight: "300",
   },
   modalIcon: {
     width: 80,
     height: 80,
     borderRadius: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginBottom: 16,
     marginTop: 20,
   },
   modalIconText: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   modalMessage: {
-    textAlign: 'center',
-    fontWeight: '500',
+    textAlign: "center",
+    fontWeight: "500",
     lineHeight: 24,
   },
   modalButton: {
-    width: '100%',
+    width: "100%",
     borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginTop: 8,
     marginBottom: 20,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 3,
     elevation: 2,
   },
   modalButtonText: {
-    color: 'white',
-    fontWeight: '600',
+    color: "white",
+    fontWeight: "600",
     letterSpacing: 0.5,
   },
 });
